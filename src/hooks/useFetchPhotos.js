@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+const API_URL =
+  import.meta.env.VITE_API_URL || "https://picsum.photos/v2/list?limit=30";
+
 const useFetchPhotos = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -8,7 +11,7 @@ const useFetchPhotos = () => {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const response = await fetch("https://picsum.photos/v2/list?limit=30");
+        const response = await fetch(API_URL);
 
         if (!response.ok) {
           throw new Error("Failed to fetch photos");
